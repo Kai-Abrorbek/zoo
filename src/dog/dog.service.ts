@@ -9,4 +9,8 @@ export class DogService {
   public getIntroduce(): string {
     return 'My name is Rex!';
   }
+
+  public modifyName(name: string): string {
+    return `My name is ${name}`;
+  }
 }

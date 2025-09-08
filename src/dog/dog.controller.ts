@@ -1,4 +1,13 @@
-import { Controller, Get, Param, Query, Req, Res } from '@nestjs/common';
+import {
+  Body,
+  Controller,
+  Get,
+  Param,
+  Post,
+  Query,
+  Req,
+  Res,
+} from '@nestjs/common';
 import { DogService } from './dog.service';
 import express from 'express';
 @Controller('dog')
@@ -15,5 +24,12 @@ export class DogController {
     console.log('params: ', params);
     console.log('params: ', query);
     return this.dogService.getIntroduce();
+  }
+
+  @Post('edit')
+  public modifiyName(@Body() body): string {
+    console.log('Body: ', body);
+    const result = this.dogService.modifyName(body.name);
+    return result;
   }
 }
